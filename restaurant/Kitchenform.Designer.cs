@@ -47,7 +47,7 @@
             Controls.Add(textBox1);
             Name = "Kitchenform";
             Text = "Kitchenform";
-            Load += this.Kitchenform_Load;
+            Load += Kitchenform_Load;
             ResumeLayout(false);
             PerformLayout();
         }
