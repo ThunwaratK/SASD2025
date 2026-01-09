@@ -18,7 +18,7 @@ namespace restaurant
         {
             InitializeComponent();
         }
-
+        //
         private void Kitchenform_Load(object sender, EventArgs e)
         {
             var thread = new Thread(() =>
