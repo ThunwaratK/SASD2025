@@ -6,58 +6,72 @@ using System.Threading.Tasks;
 
 namespace Refactoring101
 {
-    // Do Refactoring the following code:
     public class QuestionsAndAnswers
     {
         // 1. Mysterious Name
-        public double Calc(double a, double b)
+        public double GetMaximum(double firstNumber, double secondNumber)
         {
-            return a > b ? a : b;
+            return Math.Max(firstNumber, secondNumber);
         }
 
-        // 2. Duplicate Code
         public void Print()
         {
-            Console.WriteLine("***********************");
-            Console.WriteLine("   Mr.Harry Potter");
-            Console.WriteLine("***********************");
-            Console.WriteLine();
+            PrintPerson("Mr. Harry Potter");
+            PrintPerson("Ms. Mary Poppins");
+            PrintPerson("Mr. Johnny Black");
+        }
 
+        private void PrintPerson(string name)
+        {
             Console.WriteLine("***********************");
-            Console.WriteLine("   Ms.Mary Poppin");
-            Console.WriteLine("***********************");
-            Console.WriteLine();
-
-            Console.WriteLine("***********************");
-            Console.WriteLine("   Mr.Johny Black");
+            Console.WriteLine($"   {name}");
             Console.WriteLine("***********************");
             Console.WriteLine();
         }
 
-        // 3. Shotgun Surgery
+        public static class StudentStatistics
+        {
+            public const int StudentCount = 48;
+        }
+
         public class Shotgun1
         {
             public void DisplayStudents()
             {
-                Console.WriteLine("Student Count = " + 48);
+                Console.WriteLine($"Student Count = {StudentStatistics.StudentCount}");
             }
         }
+
         public class Shotgun2
         {
             public void PrintTotal()
             {
-                Console.WriteLine("Total Students : " + 48);
+                Console.WriteLine($"Total Students : {StudentStatistics.StudentCount}");
             }
         }
 
-        // 4. Data Clump
-        public void PrintDate(int day, int month, int year)
+        public void PrintDate(Date date)
         {
-            Console.WriteLine($"{day:00}/{month:00}/{year:0000}");
+            Console.WriteLine(date.Format());
         }
-        // 5. Feature Envy
-        //     จากข้อที่แล้ว น่าจะได้สร้างคลาส Date ขึ้นมา
-        //     ในคลาส Date นั้นให้สร้าง method: public string Format()
-        //      ปรับให้ PrintDate(...) ของเดิม ไปเรียก date.Format() ดังกล่าว
+    }
+
+    public class Date
+    {
+        public int Day { get; }
+        public int Month { get; }
+        public int Year { get; }
+
+        public Date(int day, int month, int year)
+        {
+            Day = day;
+            Month = month;
+            Year = year;
+        }
+
+        public string Format()
+        {
+            return $"{Day:00}/{Month:00}/{Year:0000}";
+        }
     }
 }
